@@ -1,0 +1,58 @@
+.secure-email-link {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  font-family: "NType82Mono", monospace;
+}
+
+.dynamic-email {
+  filter: blur(0.5px);
+  transition: filter 0.3s ease;
+}
+
+.dynamic-email:hover {
+  filter: none;
+}
+
+.rtl-obfuscation::before {
+  content: "moc.liamg@yendup_iwhsay";
+  opacity: 0.3;
+}
+
+.rtl-obfuscation {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.entity-fallback {
+  display: none;
+}
+
+.honeypot {
+  display: none !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (script) {
+  .rtl-obfuscation {
+    display: none;
+  }
+  .entity-fallback {
+    display: inline;
+  }
+}
+
+.secure-email-link:hover .dynamic-email {
+  text-shadow: none;
+}

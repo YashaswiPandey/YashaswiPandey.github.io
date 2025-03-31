@@ -1,0 +1,127 @@
+/*
+ * Portfolio - (c) 2025 by Yashaswi Pandey
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Ndot57";
+  src: url("../public/Fonts/fonts-ndot57.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NType82Mono";
+  src: url("../public/Fonts/NType82Mono-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "LetteraMonoLL";
+  src: url("../public/Fonts/LetteraMonoLLCondLight-Regular.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "sahadeva";
+  src: url("../public/Fonts/sahadeva.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0900-097F;
+}
+
+body {
+  font-family: "LetteraMonoLL", sans-serif;
+  @apply text-neutral-900 bg-neutral-50 dark:text-neutral-50 dark:bg-neutral-900;
+  @apply text-xs sm:text-sm;
+}
+
+@layer utilities {
+  .font-ndot57 {
+    font-family: "Ndot57", sans-serif;
+  }
+  .font-ntype82mono {
+    font-family: "NType82Mono", monospace;
+  }
+  .font-lettera-mono {
+    font-family: "LetteraMonoLL", monospace;
+  }
+  .font-sahadeva {
+    font-family: "sahadeva";
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+.cursor {
+  animation: blink 1s step-end infinite;
+  color: #00ff00;
+  text-shadow: 0 0 8px #00ff0077;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.terminal-container {
+  background-color: #0a0a0a;
+  padding: 2rem;
+  font-family: "NType82Mono", monospace;
+}
+
+.terminal-container pre {
+  font-family: "NType82Mono", monospace !important;
+  tab-size: 4;
+  white-space: pre-wrap !important;
+  @apply text-xs md:text-[18px] leading-relaxed;
+}
+
+.terminal-container .cursor {
+  font-family: "NType82Mono", monospace;
+  animation: blink 1s step-end infinite;
+  color: #7bd88f;
+}
+
+@layer components {
+  svg {
+    @apply fill-current stroke-current;
+  }
+
+  .group:hover svg,
+  .group[data-active="true"] svg {
+    @apply text-[#2B72D7] dark:text-[#F76900];
+  }
+}
