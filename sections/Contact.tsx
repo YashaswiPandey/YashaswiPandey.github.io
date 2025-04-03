@@ -130,25 +130,16 @@ const Contact = () => {
           label="Message"
           hasError={!!errors.message}
           placeholder="Type your message here"
-          description={errors.message?.message || "Whatever you wan't to talk to me about"}
+          description={errors.message?.message || "Whatever you want to talk to me about"}
           {...register("message", {
             required: { value: true, message: "This is a required field" },
             minLength: { value: 10, message: "Your message must be at least 10 characters long" },
           })}
         />
 
-        <button
-          type="submit"
-          className={`mt-8 flex items-center justify-center gap-2 px-6 py-3 rounded-md transition-colors ${
-            submitting
-              ? "bg-gray-400 cursor-not-allowed"
-              : "bg-[#2B72D7] dark:bg-[#F76900] hover:bg-[#1E5BB9] dark:hover:bg-[#E05B00] text-white"
-          }`}
-          disabled={submitting}
-        >
-          <FaPaperPlane className="text-lg" />
-          {submitting ? "Sending..." : "Send Message"}
-        </button>
+        <Button icon={FaPaperPlane} className="mt-8" onClick={onSubmit} disabled={submitting}>
+        Send Message
+      </Button>
       </form>
     </div>
   );
