@@ -16,6 +16,7 @@
 import Tippy from "@tippyjs/react";
 import clsx from "clsx";
 import links from "data/links";
+import { FaFilePdf } from "react-icons/fa6";
 
 type Profile = {
   title: string;
@@ -41,35 +42,75 @@ const profiles: Profile[] = [
     link: links.linkedin,
     className: "",
   },
-  {
-    title: "Twitter",
-    icon: coloredDeviconMappings.Twitter,
-    link: links.twitter,
-    className: "dark:invert",
-  },
-  {
-    title: "GitHub",
-    icon: coloredDeviconMappings.GitHub,
-    link: links.github,
-    className: "dark:invert",
-  },
+{
+  title: "GitHub",
+  icon: coloredDeviconMappings.GitHub,
+  link: links.github,
+  className: "dark:invert",
+},
 ];
 
+const ResumeButton = () => {
+  const resumePath = "/Resume/yashaswi-pandey-resume.pdf";
+
+  const handleView = () => {
+    window.open(resumePath, "_blank", "noopener,noreferrer");
+  };
+
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = resumePath;
+    link.download = "yashaswi-pandey-resume.pdf";
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  return (
+    <div className="relative animate__animated animate__fadeIn" style={{ animationDelay: "0.5s" }}>
+    <div className="relative rounded-sm z-10 px-4 py-1.5 flex items-center bg-neutral-900 dark:bg-neutral-50 text-neutral-50 dark:text-neutral-900 top-0 left-0 transition-[top_left] hover:top-0.5 hover:left-0.5 active:top-1 active:left-1">
+    <div className="flex-[3] flex items-center gap-2 pr-2">
+    <FaFilePdf fontSize={14} className="text-red-500" />
+    <span className="font-bold text-sm">Resume</span>
+    </div>
+    <div className="flex-[1] flex flex-col h-full">
+    <div
+    className="flex-1 flex items-center justify-center hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors px-1 cursor-pointer text-xs"
+    onClick={handleView}
+    >
+    View
+    </div>
+    <div
+    className="flex-1 flex items-center justify-center hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors px-1 cursor-pointer text-xs"
+    onClick={handleDownload}
+    >
+    Download
+    </div>
+    </div>
+    </div>
+    <div className="w-full h-full rounded-sm absolute top-1 left-1 border-2 border-neutral-900 dark:border-neutral-50" />
+    </div>
+  );
+};
+
 const Profiles: React.FC = () => (
-  <div className="h-[22px] mt-5 flex gap-8">
-    {profiles.map(({ title, link, icon, className }, index) => (
-      <Tippy key={title} content={title} placement="bottom">
-        <span
-          className={clsx("p-1 text-sm rounded-full", "animate__animated animate__fadeIn", className)}
-          style={{ animationDelay: `${index * 0.5 + 1}s` }}
-        >
-          <a href={link} target="_blank" rel="noreferrer">
-            <i className={`${icon} text-[1.1rem]`} />
-            <span className="sr-only">{title}</span>
-          </a>
-        </span>
-      </Tippy>
-    ))}
+  <div className="h-[22px] mt-5 flex gap-4 items-center">
+  <ResumeButton />
+  {profiles.map(({ title, link, icon, className }, index) => (
+    <Tippy key={title} content={title} placement="bottom">
+    <span
+    className={clsx("p-1 text-sm rounded-full", "animate__animated animate__fadeIn", className)}
+    style={{ animationDelay: `${index * 0.5 + 1}s` }}
+    >
+    <a href={link} target="_blank" rel="noreferrer">
+    <i className={`${icon} text-[1.1rem]`} />
+    <span className="sr-only">{title}</span>
+    </a>
+    </span>
+    </Tippy>
+  ))}
   </div>
 );
 

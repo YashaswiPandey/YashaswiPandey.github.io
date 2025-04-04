@@ -106,7 +106,7 @@ const Contact = () => {
           className="md:w-3/4"
           hasError={!!errors.fullName}
           placeholder="Full Name"
-          description={errors.fullName?.message || "Your full name (First, Middle, Last)"}
+          description={errors.fullName?.message || "Your Full Name (First, Middle, Last)"}
           {...register("fullName", {
             required: { value: true, message: "This is a required field" },
           })}
@@ -117,7 +117,7 @@ const Contact = () => {
           className="md:w-3/4"
           label="Email Address"
           hasError={!!errors.email}
-          placeholder="EmailId@domain.com"
+          placeholder="EmailId@Domain.com"
           description={errors.email?.message || "How do I contact you"}
           {...register("email", {
             required: { value: true, message: "This is a required field" },
