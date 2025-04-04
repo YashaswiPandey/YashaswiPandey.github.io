@@ -13,6 +13,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
+/*
+ * Portfolio - (c) 2025 by Yashaswi Pandey
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
 import Image from "next/image";
 import { useMemo, useRef, useState } from "react";
 import { DiMsqlServer } from "react-icons/di";
@@ -70,6 +85,8 @@ import {
 import { VscAzure } from "react-icons/vsc";
 import { Section } from "types/Sections";
 import { getSectionHeading } from "utils";
+import Tippy from "@tippyjs/react";
+import { MdMoreVert } from "react-icons/md";
 
 type Skill = {
   id: number;
@@ -268,6 +285,7 @@ const skills: Skill[] = [
 const Skills = () => {
   const column1 = useRef<HTMLDivElement>(null);
   const column2 = useRef<HTMLDivElement>(null);
+  const [showAll, setShowAll] = useState(false);
 
   const [leftCol, rightCol] = useMemo(() => {
     const estimateHeight = (skill: Skill) => {
@@ -276,7 +294,10 @@ const Skills = () => {
       return baseHeight + (skill.programs.length + skill.frameworks.length) * itemHeight;
     };
 
-    const sortedSkills = [...skills].sort((a, b) => estimateHeight(b) - estimateHeight(a));
+    // Filter skills based on showAll state
+    const skillsToDisplay = showAll ? skills : skills.slice(0, 3);
+
+    const sortedSkills = [...skillsToDisplay].sort((a, b) => estimateHeight(b) - estimateHeight(a));
     const columns = [
       { items: [] as Skill[], height: 0 },
       { items: [] as Skill[], height: 0 },
@@ -289,7 +310,7 @@ const Skills = () => {
     });
 
     return [columns[0].items, columns[1].items];
-  }, []);
+  }, [showAll]);
 
   return (
     <div id={Section.Skills} className="min-h-screen w-full">
@@ -308,6 +329,16 @@ const Skills = () => {
           ))}
         </div>
       </div>
+
+      {skills.length > 3 && (
+        <div className="flex justify-center mt-6 w-full">
+          <Tippy content={showAll ? "Show fewer skills" : "Show all skills"} placement="right">
+            <div className="inline-block ml-8 p-2 cursor-pointer" onClick={() => setShowAll(!showAll)}>
+              <MdMoreVert size={20} />
+            </div>
+          </Tippy>
+        </div>
+      )}
     </div>
   );
 };
