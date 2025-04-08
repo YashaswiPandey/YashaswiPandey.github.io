@@ -56,18 +56,17 @@ const AboutMe = () => {
           </p>
         </div>
 
-        <div className="col-span-3 max-w-full prose prose-sm md:prose-base prose-neutral dark:prose-invert mt-8">
+        <div className="col-span-3 max-w-full prose prose-sm md:prose-base prose-neutral dark:prose-invert lg:mt-8">
           <p>Hello World!</p>
 
           <p>
-            My name is Yashaswi Pandey, and it&apos;s hard to believe that despite my long-time fascination with
-            computers, it took me this long to launch my personal website. Welcome to my little corner of the web, which
-            is constantly evolving with updates from different aspects of my life.
+            Welcome to my little corner of the web, which is constantly evolving with updates from different aspects
+            of my life.
           </p>
 
           <p>
-            I remember using LOGO and MS BASIC, and soon after, QBasic in some early programming classes. I knew at the
-            time that my future lay in manipulating ones and zeroes to do my bidding. Later, I dabbled in Visual Basic
+            I remember using LOGO and MS BASIC in some early programming classes. I knew at the time that my future lay
+            in manipulating ones and zeroes to do my bidding. Later, I dabbled in Visual Basic
             scripting, C++, and Java (which would remain a part of my life for the next decade), along with mySQL. In
             college, deeper knowledge of databases, Java, and Web Development became my main focus.
           </p>

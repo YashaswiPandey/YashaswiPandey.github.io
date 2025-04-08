@@ -1,4 +1,4 @@
-/*
+/**
  * Portfolio - (c) 2025 by Yashaswi Pandey
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,6 +34,11 @@ module.exports = {
         "3rem": "3rem",
         "2.5rem": "2.5rem",
       },
+      rotate: {
+        20: "20deg",
+        "-20": "-20deg",
+        "-30": "-30deg",
+      },
       keyframes: {
         jitter: {
           "0%, 100%": { transform: "rotate(0deg)" },
@@ -56,12 +61,24 @@ module.exports = {
           "0%": { r: "0", opacity: "1" },
           "100%": { r: "15", opacity: "0" },
         },
+        "arc-appear": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        "height-adjust": {
+          "0%, 100%": { height: "90vh" },
+          "50%": { height: "80vh" },
+        },
       },
       animation: {
         jitter: "jitter 0.4s ease-in-out",
         verticalJitter: "verticalJitter 0.4s ease-in-out",
         parabola: "parabola 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards",
         shockwave: "shockwave 0.5s ease-out 0.4s forwards",
+        "arc-1": "arc-appear 0.5s ease-out forwards",
+        "arc-2": "arc-appear 0.5s ease-out 0.5s forwards",
+        "arc-3": "arc-appear 0.5s ease-out 1s forwards",
+        "height-adjust": "height-adjust 3.5s ease-in-out 3",
       },
     },
   },

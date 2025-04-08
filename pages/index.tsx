@@ -31,36 +31,36 @@ const Home: NextPage = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Terminal Animation */}
-      {!showMainContent && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black z-50">
-          <CodeAnimation onComplete={() => setShowMainContent(true)} />
-        </div>
-      )}
+    {/* Terminal Animation */}
+    {!showMainContent && (
+      <div className="fixed inset-0 flex items-center justify-center bg-black z-50">
+      <CodeAnimation onComplete={() => setShowMainContent(true)} />
+      </div>
+    )}
 
-      {/* Main Content */}
-      {showMainContent && (
-        <div className="w-5/6 mx-auto grid gap-24 animate-fade-in">
-          <Header />
-          <AboutMe />
+    {/* Main Content */}
+    {showMainContent && (
+      <div className="w-5/6 mx-auto grid gap-24 animate-fade-in">
+      <Header />
+      <AboutMe />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="space-y-12">
-              <Education />
-              <Leadership />
-            </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div className="space-y-12">
+      <Education />
+      <Leadership />
+      </div>
 
-            <div>
-              <Skills />
-            </div>
-          </div>
+      <div>
+      <Skills />
+      </div>
+      </div>
 
-          <Projects />
+      <Projects />
 
-          <Contact />
-          <Footer />
-        </div>
-      )}
+      <Contact />
+      <Footer />
+      </div>
+    )}
     </div>
   );
 };
